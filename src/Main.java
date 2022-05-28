@@ -11,6 +11,7 @@ public class Main {
                 new Interval(5,8),
                 new Interval(1,3),
                 new Interval(7,8));
+
         ij.splitAndCount(inputIntervals);
     }
 }
