@@ -7,24 +7,15 @@ import java.util.stream.IntStream;
 public class IntervalsJava {
     Map<Interval, Integer> splitAndCount(List<Interval> intervals) {
         List<Interval> allSubIntervals = generateAllSubIntervals(intervals);
-
         Map<Interval, Integer> result = new HashMap<>();
-        allSubIntervals.forEach(interval -> result.put(interval, count(intervals, interval)));
+
+        allSubIntervals.forEach(subInterval -> result.put(subInterval, countSubIntervals(intervals, subInterval)));
 
         return result;
     }
 
-    public int count(List<Interval> intervals, Interval interval){
-        int cnt = 0;
-        for(Interval cur : intervals){
-            if(interval.a >= cur.a && interval.b <= cur.b){
-                cnt++;
-            }
-        }
-
-        //intervals.stream().reduce(new)
-
-        return cnt;
+    public int countSubIntervals(List<Interval> intervals, Interval subInterval){
+        return (int) intervals.stream().filter(cur -> subInterval.a >= cur.a && subInterval.b <= cur.b).count();
     }
 
     public List<Interval> generateAllSubIntervals(List<Interval> intervals){
@@ -45,7 +36,6 @@ public class IntervalsJava {
         return intervals.stream().mapToInt(value -> value.b).max().orElseThrow(() -> new IllegalArgumentException("could not find maximum value"));
     }
 }
-
 
 class Interval {
     final int a;
