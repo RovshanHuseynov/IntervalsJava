@@ -2,7 +2,7 @@
 # DAN IT education Task
 # written by Rovshan Huseynov on 28.05.2022
 # https://github.com/RovshanHuseynov/IntervalsJava
-# -------------------------------------------
+# -----------------------------------------------------------
 
 /**
 * given: List<Interval>

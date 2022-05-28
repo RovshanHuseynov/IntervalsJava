@@ -1,16 +1,17 @@
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 public class IntervalsJava {
     Map<Interval, Integer> splitAndCount(List<Interval> intervals) {
         List<Interval> allSubIntervals = generateAllSubIntervals(intervals);
-        Map<Interval, Integer> result = new HashMap<>();
 
+        Map<Interval, Integer> result = new HashMap<>();
         allSubIntervals.forEach(interval -> result.put(interval, count(intervals, interval)));
 
-        result.forEach((k, v) -> System.out.println(k + " -> " + v));
-
         return result;
-        //throw new IllegalArgumentException("should be implemented");
     }
 
     public int count(List<Interval> intervals, Interval interval){
@@ -30,14 +31,10 @@ public class IntervalsJava {
         int min = getMin(intervals);
         int max = getMax(intervals);
 
-        List<Interval> result = new ArrayList<>();
-        for(int i=min; i<=max; i++){
-            for(int j=i+1; j<=max; j++){
-                result.add(new Interval(i, j));
-            }
-        }
-
-        return result;
+        return IntStream.rangeClosed(min, max)
+                .boxed()
+                .flatMap(i -> IntStream.rangeClosed(i + 1, max).mapToObj(j -> new Interval(i, j)))
+                .collect(Collectors.toList());
     }
 
     public int getMin(List<Interval> intervals) {

@@ -12,6 +12,6 @@ public class Main {
                 new Interval(1,3),
                 new Interval(7,8));
 
-        ij.splitAndCount(inputIntervals);
+        ij.splitAndCount(inputIntervals).forEach((k, v) -> System.out.println(k + " -> " + v));
     }
 }
