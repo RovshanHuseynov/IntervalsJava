@@ -4,6 +4,8 @@
 # https://github.com/RovshanHuseynov/IntervalsJava
 # -----------------------------------------------------------
 
+Please run the MainApp class to see the result
+
 /**
 * given: List<Interval>
 *

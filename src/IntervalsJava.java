@@ -4,6 +4,8 @@ import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
+import static model.ErrorMessagesEnum.*;
+
 public class IntervalsJava {
     Map<Interval, Integer> splitAndCount(List<Interval> intervals) {
         List<Interval> allSubIntervals = generateAllSubIntervals(intervals);
@@ -29,11 +31,11 @@ public class IntervalsJava {
     }
 
     public int getMin(List<Interval> intervals) {
-        return intervals.stream().mapToInt(value -> value.a).min().orElseThrow(() -> new IllegalArgumentException("could not find minimum value"));
+        return intervals.stream().mapToInt(value -> value.a).min().orElseThrow(() -> new IllegalArgumentException(MIN_VALUE_ERROR.getMessage()));
     }
 
     public int getMax(List<Interval> intervals){
-        return intervals.stream().mapToInt(value -> value.b).max().orElseThrow(() -> new IllegalArgumentException("could not find maximum value"));
+        return intervals.stream().mapToInt(value -> value.b).max().orElseThrow(() -> new IllegalArgumentException(MAX_VALUE_ERROR.getMessage()));
     }
 }
 

@@ -1,7 +1,7 @@
 import java.util.Arrays;
 import java.util.List;
 
-public class Main {
+public class MainApp {
     public static void main(String[] args) {
         IntervalsJava ij = new IntervalsJava();
         List<Interval> inputIntervals = Arrays.asList(
